@@ -19,14 +19,10 @@ public:
 
   void buttonPushed(unsigned short int slot, Button button_pushed) {
     auto *appliance = slots[slot];
-    switch (button_pushed) {
-      case Button::On :
-        appliance->on();
-        break;
-      case Button::Off :
-        appliance->off();
-        break;
-      }
+    if (button_pushed == Button::On)
+      appliance->on();
+    else
+      appliance->off();
     last_command = std::make_pair(appliance, button_pushed);
   }
 
