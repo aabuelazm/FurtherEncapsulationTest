@@ -10,6 +10,7 @@ public:
 };
 
 class Stereo {
+
 public:
   void on() { cout << "The Vibes are vibing" << endl; }
   void off() { cout << "The Vibes are dead" << endl; }

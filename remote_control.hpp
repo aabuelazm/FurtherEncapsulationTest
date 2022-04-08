@@ -2,7 +2,6 @@
 #define REMOTE_CONTROL_HPP
 
 #include "commander_class.hpp"
-#include <concepts>
 #include <utility>
 
 namespace further_encapsulation {
@@ -19,7 +18,7 @@ public:
 
   void buttonPushed(unsigned short int slot, Button button_pushed) {
     auto *appliance = slots[slot];
-    if (button_pushed == Button::On)
+    if (bool(button_pushed))
       appliance->on();
     else
       appliance->off();
@@ -28,7 +27,7 @@ public:
 
   void undoButtonPushed() {
     last_command.first->undo(last_command.second);
-    if (last_command.second == Button::On)
+    if (bool(last_command.second))
       last_command.second = Button::Off;
     else
       last_command.second = Button::On;

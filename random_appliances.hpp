@@ -31,7 +31,7 @@ public:
   void circulate();
   void jetsOn();
   void jetsOff();
-  void setTemperature();
+  void setTemperature(float temperature);
 };
 
 class Thermostat {
@@ -40,6 +40,7 @@ public:
 };
 
 class SecurityControl {
+public:
   void arm();
   void disarm();
 };
