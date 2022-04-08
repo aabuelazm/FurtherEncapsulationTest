@@ -38,6 +38,13 @@ public:
   }
 };
 
+class Thermostat {
+public:
+  void setTemperature(float temperature) {
+    cout << "The room is now " << temperature << " degrees." << endl;
+  }
+};
+
 class SecurityControl {
 public:
   void arm() { cout << "Engage kill mode" << endl; }

@@ -36,7 +36,7 @@ public:
 
 class Thermostat {
 public:
-  void setTemperature();
+  void setTemperature(float temperature);
 };
 
 class SecurityControl {
@@ -62,8 +62,8 @@ class TV {
 public:
   void on();
   void off();
-  void setInputChannel();
-  void setVolume();
+  void setInputChannel(unsigned int channel);
+  void setVolume(unsigned int volume);
 };
 
 class CeilingFan {

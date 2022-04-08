@@ -98,6 +98,7 @@ public:
 class CeilingFanCommander : virtual public Commander {
 private:
   CeilingFan c_fan{};
+  unsigned int last_speed{};
 
 public:
   void on();
