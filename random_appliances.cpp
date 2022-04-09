@@ -44,7 +44,7 @@ void OutdoorLight::on() { cout << "Laser Defense" << endl; }
 void OutdoorLight::off() { cout << "Laser Defense Disabled" << endl; }
 
 void TV::on() { cout << "Background noise machine on" << endl; }
-void TV::off() { cout << " Background noise machine off" << endl; }
+void TV::off() { cout << "Background noise machine off" << endl; }
 void TV::setInputChannel(unsigned int channel) {
   cout << "You're now watching Channel " << channel << " news!" << endl;
 }
