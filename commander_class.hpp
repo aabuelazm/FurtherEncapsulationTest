@@ -2,6 +2,7 @@
 #define COMMANDER_CLASS_HPP
 
 #include <iostream>
+#include <memory>
 #include <vector>
 
 namespace further_encapsulation {
@@ -20,24 +21,21 @@ public:
 
 class MacroCommander : virtual public Commander {
 public:
-  std::vector<Commander *> commanders;
+  std::vector<std::shared_ptr<Commander>> commanders;
 
   void on() {
-    for (auto commander : commanders) {
+    for (auto commander : commanders)
       commander->on();
-    }
   }
 
   void off() {
-    for (auto commander : commanders) {
+    for (auto commander : commanders)
       commander->off();
-    }
   }
 
   void undo(Button last_command) {
-    for (auto commander : commanders) {
+    for (auto commander : commanders)
       commander->undo(last_command);
-    }
   }
 };
 } // namespace further_encapsulation

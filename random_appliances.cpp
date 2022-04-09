@@ -3,141 +3,95 @@
 using namespace std;
 using namespace further_encapsulation;
 
-class ApplianceControl {
-public:
-  void on() { cout << "Appliance On" << endl; }
-  void off() { cout << "Appliance Off" << endl; }
-};
+void ApplianceControl::on() { cout << "Appliance On" << endl; }
+void ApplianceControl::off() { cout << "Appliance Off" << endl; }
 
-class Stereo {
+void Stereo::on() { cout << "The Vibes are vibing" << endl; }
+void Stereo::off() { cout << "The Vibes are dead" << endl; }
+void Stereo::setCD() { cout << "The Vibes are coming from a disc" << endl; }
+void Stereo::setDVD() {
+  cout << "The Vibes are coming from a large disc" << endl;
+}
+void Stereo::setRadio() {
+  cout << "The Vibes are coming from the waves" << endl;
+}
+void Stereo::setVolume(unsigned short int volume) {
+  cout << "Vibe check: " << volume << endl;
+}
 
-public:
-  void on() { cout << "The Vibes are vibing" << endl; }
-  void off() { cout << "The Vibes are dead" << endl; }
-  void setCD() { cout << "The Vibes are coming from a disc" << endl; }
-  void setDVD() { cout << "The Vibes are coming from a large disc" << endl; }
-  void setRadio() { cout << "The Vibes are coming from the waves" << endl; }
-  void setVolume(unsigned short int volume) {
-    cout << "Vibe check: " << volume << endl;
-  }
-};
+void FaucetControl::openValve() { cout << "WET" << endl; }
+void FaucetControl::closeValve() { cout << "NOT WET" << endl; }
 
-class FaucetControl {
-public:
-  void openValve() { cout << "WET" << endl; }
-  void closeValve() { cout << "NOT WET" << endl; }
-};
+void Hottub::circulate() { cout << "Hottub swirly" << endl; }
+void Hottub::jetsOn() { cout << "Hottub fun" << endl; }
+void Hottub::jetsOff() { cout << "Hottub unfun" << endl; }
+void Hottub::setTemperature(float temperature) {
+  cout << "Hottub is at " << temperature << " degrees. Soup time" << endl;
+}
 
-class Hottub {
-public:
-  void circulate() { cout << "Hottub swirly" << endl; }
-  void jetsOn() { cout << "Hottub fun" << endl; }
-  void jetsOff() { cout << "Hottub unfun" << endl; }
-  void setTemperature(float temperature) {
-    cout << "Hottub is at " << temperature << " degrees. Soup time" << endl;
-  }
-};
+void Thermostat::setTemperature(float temperature) {
+  cout << "The room is now " << temperature << " degrees." << endl;
+}
 
-class Thermostat {
-public:
-  void setTemperature(float temperature) {
-    cout << "The room is now " << temperature << " degrees." << endl;
-  }
-};
+void SecurityControl::arm() { cout << "Engage kill mode" << endl; }
+void SecurityControl::disarm() { cout << "Disengage kill mode" << endl; }
 
-class SecurityControl {
-public:
-  void arm() { cout << "Engage kill mode" << endl; }
-  void disarm() { cout << "Disengage kill mode" << endl; }
-};
+void CeilingLight::on() { cout << "Let there be light!" << endl; }
+void CeilingLight::off() { cout << "Let there be no light!" << endl; }
+void CeilingLight::dim() { cout << "Let there be some light!" << endl; }
 
-class CeilingLight {
-public:
-  void on() { cout << "Let there be light!" << endl; }
-  void off() { cout << "Let there be no light!" << endl; }
-  void dim() { cout << "Let there be some light!" << endl; }
-};
+void OutdoorLight::on() { cout << "Laser Defense" << endl; }
+void OutdoorLight::off() { cout << "Laser Defense Disabled" << endl; }
 
-class OutdoorLight {
-public:
-  void on() { cout << "Laser Defense" << endl; }
-  void off() { cout << "Laser Defense Disabled" << endl; }
-};
+void TV::on() { cout << "Background noise machine on" << endl; }
+void TV::off() { cout << " Background noise machine off" << endl; }
+void TV::setInputChannel(unsigned int channel) {
+  cout << "You're now watching Channel " << channel << " news!" << endl;
+}
+void TV::setVolume(unsigned int volume) {
+  cout << "Background noise level at " << volume << endl;
+}
 
-class TV {
-public:
-  void on() { cout << "Background noise machine on" << endl; }
-  void off() { cout << " Background noise machine off" << endl; }
-  void setInputChannel(unsigned int channel) {
-    cout << "You're now watching Channel " << channel << " news!" << endl;
-  }
-  void setVolume(unsigned int volume) {
-    cout << "Background noise level at " << volume << endl;
-  }
-};
+void CeilingFan::high() {
+  this->speed = 420;
+  cout << this->speed << endl;
+}
+void CeilingFan::medium() {
+  this->speed = 210;
+  cout << this->speed << endl;
+}
+void CeilingFan::low() {
+  this->speed = 105;
+  cout << this->speed << endl;
+}
+void CeilingFan::off() {
+  this->speed = 0;
+  cout << this->speed << endl;
+}
+unsigned int CeilingFan::getSpeed() {
+  cout << "Speed at " << this->speed << endl;
+  return this->speed;
+}
 
-class CeilingFan {
-private:
-  unsigned int speed{};
+void GardenLight::setDuskTime(unsigned short int d_time) {
+  dusk_time = d_time;
+  cout << "Dusk is now at " << dusk_time << ":00 PM" << endl;
+}
+void GardenLight::setDawnTime(unsigned short int d_time) {
+  dawn_time = d_time;
+  cout << "Dawn is now at " << dusk_time << ":00 AM" << endl;
+}
+void GardenLight::manualOn() { cout << "Hey, I was napping" << endl; }
+void GardenLight::manualOff() { cout << "Hey, I wasn't done" << endl; }
 
-public:
-  void high() {
-    speed = 420;
-    cout << speed << endl;
-  }
-  void medium() {
-    speed = 210;
-    cout << speed << endl;
-  }
-  void low() {
-    speed = 105;
-    cout << speed << endl;
-  }
-  void off() {
-    speed = 0;
-    cout << speed << endl;
-  }
-  unsigned int getSpeed() {
-    cout << "Speed at " << speed << endl;
-    return speed;
-  }
-};
+void GarageDoor::up() { cout << "Going up!" << endl; }
+void GarageDoor::down() { cout << "Going down!" << endl; }
+void GarageDoor::stop() { cout << "Ding!" << endl; }
+void GarageDoor::lightOn() { cout << "Garage light on" << endl; }
+void GarageDoor::lightOff() { cout << "Garage light off" << endl; }
 
-class GardenLight {
-private:
-  unsigned short int dusk_time{};
-  unsigned short int dawn_time{};
+void Sprinkler::waterOn() { cout << "Tinkle Time" << endl; }
+void Sprinkler::waterOff() { cout << "Tinkle Time Terminated" << endl; }
 
-public:
-  void setDuskTime(unsigned int d_time) {
-    dusk_time = d_time;
-    cout << "Dusk is now at " << dusk_time << ":00 PM" << endl;
-  }
-  void setDawnTime(unsigned int d_time) {
-    dawn_time = d_time;
-    cout << "Dawn is now at " << dusk_time << ":00 AM" << endl;
-  }
-  void manualOn() { cout << "Hey, I was napping" << endl; }
-  void manualOff() { cout << "Hey, I wasn't done" << endl; }
-};
-
-class GarageDoor {
-public:
-  void up() { cout << "Going up!" << endl; }
-  void down() { cout << "Going down!" << endl; }
-  void stop() { cout << "Ding!" << endl; }
-  void lightOn() { cout << "Garage light on" << endl; }
-  void lightOff() { cout << "Garage light off" << endl; }
-};
-
-class Sprinkler {
-public:
-  void waterOn() { cout << "Tinkle Time" << endl; }
-  void waterOff() { cout << "Tinkle Time Terminated" << endl; }
-};
-
-class Light {
-public:
-  void on() { cout << "You turn me on :)" << endl; }
-  void off() { cout << "You turn me off :(" << endl; }
-};
+void Light::on() { cout << "You turn me on :)" << endl; }
+void Light::off() { cout << "You turn me off :(" << endl; }

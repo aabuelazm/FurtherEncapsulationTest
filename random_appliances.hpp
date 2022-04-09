@@ -17,7 +17,7 @@ public:
   void setCD();
   void setDVD();
   void setRadio();
-  void setVolume(unsigned int volume);
+  void setVolume(unsigned short int volume);
 };
 
 class FaucetControl {
@@ -68,7 +68,7 @@ public:
 
 class CeilingFan {
 private:
-  unsigned int speed;
+  unsigned int speed{};
 
 public:
   void high();
@@ -80,12 +80,12 @@ public:
 
 class GardenLight {
 private:
-  unsigned short int dusk_time;
-  unsigned short int dawn_time;
+  unsigned short int dusk_time{};
+  unsigned short int dawn_time{};
 
 public:
-  void setDuskTime();
-  void setDawnTime();
+  void setDuskTime(unsigned short int d_time);
+  void setDawnTime(unsigned short int d_time);
   void manualOn();
   void manualOff();
 };

@@ -8,16 +8,17 @@ namespace further_encapsulation {
 
 class RemoteControl {
 private:
-  Commander *slots[7]{};
-  std::pair<Commander *, Button> last_command{};
+  std::shared_ptr<Commander> slots[7]{};
+  std::pair<std::shared_ptr<Commander>, Button> last_command{};
 
 public:
-  void setCommander(unsigned short int slot, Commander *Appliance) {
+  void setCommander(unsigned short int slot,
+                    std::shared_ptr<Commander> Appliance) {
     slots[slot] = Appliance;
   }
 
   void buttonPushed(unsigned short int slot, Button button_pushed) {
-    auto *appliance = slots[slot];
+    auto appliance = slots[slot];
     if (bool(button_pushed))
       appliance->on();
     else
