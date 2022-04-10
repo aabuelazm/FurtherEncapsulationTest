@@ -33,6 +33,13 @@ public:
     else
       last_command.second = Button::On;
   }
+
+  void printData() {
+    for (unsigned short int i = 1; i <= 7; i++) {
+      std::cout << i << ". ";
+      slots[i - 1]->printData();
+    }
+  }
 };
 } // namespace further_encapsulation
 

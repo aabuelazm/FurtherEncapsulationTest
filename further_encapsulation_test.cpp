@@ -34,19 +34,53 @@ int main() {
   remote->setCommander(5, water);
   remote->setCommander(6, make_shared<GardenLightCommander>());
 
-  remote->buttonPushed(1, Button::On);
-  remote->undoButtonPushed();
+  unsigned short input{};
+  unsigned short slot{};
+  while (true) {
+    cout << "Welcome to your Objectech Remote Control" << endl
+         << "0: Settings" << endl;
+    remote->printData();
+    cout << "8: Undo" << endl << "9: Exit" << endl << "Enter Slot Number: ";
+    cin >> input;
 
-  remote->buttonPushed(0, Button::On);
-  remote->buttonPushed(4, Button::On);
+    if (cin.fail()) {
+      remote.reset();
+      throw domain_error("Unknown Input: We are crashing for safety!");
+    }
 
-  remote->buttonPushed(2, Button::On);
-  remote->buttonPushed(0, Button::Off);
-  remote->buttonPushed(5, Button::On);
-  remote->buttonPushed(2, Button::Off);
+    else if (input == 0)
+      cout << "Settings menu coming soon!" << endl;
 
-  remote->buttonPushed(4, Button::Off);
-  remote->buttonPushed(3, Button::On);
+    else if (input < 8) {
+      slot = input;
+      cout << "1. On" << endl << "2. Off" << endl;
+      cin >> input;
 
-  remote.release();
+      if (cin.fail()) {
+        remote.reset();
+        throw domain_error("Unknown Input: We are crashing for safety!");
+      }
+
+      else if (input == 1)
+        remote->buttonPushed(slot - 1, Button::On);
+
+      else if (input == 2)
+        remote->buttonPushed(slot - 1, Button::Off);
+
+      else
+        cout << "Cancelling" << endl;
+    }
+
+    else if (input == 8)
+      remote->undoButtonPushed();
+
+    else if (input == 9)
+      break;
+
+    else
+      cout << "Unkown Input: Please input a value from 0-9" << endl;
+  }
+
+  cout << "Thank You and Good Bye!!" << endl;
+  remote.reset();
 }
