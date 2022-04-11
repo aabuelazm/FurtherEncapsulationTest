@@ -81,7 +81,7 @@ int main() {
       break;
 
     else
-      cout << "Unkown Input: Please input a value from 0-9" << endl;
+      cout << "Unknown Input: Please input a value from 0-9" << endl;
   }
 
   cout << "Thank You and Good Bye!!" << endl;
