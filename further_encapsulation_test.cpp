@@ -36,11 +36,14 @@ int main() {
 
   unsigned short input{};
   unsigned short slot{};
+
+  cout << "Welcome to your Objectech Remote Control" << endl
+       << "0: Settings" << endl;
+  remote->printData();
+  cout << "8: Undo" << endl << "9: Exit" << endl;
+
   while (true) {
-    cout << "Welcome to your Objectech Remote Control" << endl
-         << "0: Settings" << endl;
-    remote->printData();
-    cout << "8: Undo" << endl << "9: Exit" << endl << "Enter Slot Number: ";
+    cout << "Enter Slot Number: ";
     cin >> input;
 
     if (cin.fail()) {

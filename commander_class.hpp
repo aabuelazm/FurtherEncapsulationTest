@@ -5,6 +5,7 @@
 #include <cxxabi.h>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <vector>
 
 namespace further_encapsulation {
@@ -21,8 +22,15 @@ public:
   }
 
   virtual void printData() {
-    std::cout << abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0)
-              << std::endl;
+    std::string type = abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0);
+
+    auto itr = type.find_last_of(':');
+    type.erase(0, itr + 1);
+
+    itr = type.find("Commander");
+    type.erase(itr);
+
+    std::cout << type << std::endl;
   }
 };
 
@@ -46,8 +54,16 @@ public:
   }
 
   void printData() {
-    std::cout << abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0)
-              << std::endl;
+    std::string type = abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0);
+
+    auto itr = type.find_last_of(':');
+    type.erase(0, itr + 1);
+
+    itr = type.find("Commander");
+    type.erase(itr);
+
+    std::cout << type << std::endl;
+
     for (auto commander : commanders) {
       std::cout << "   - ";
       commander->printData();
