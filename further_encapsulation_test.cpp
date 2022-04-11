@@ -47,11 +47,8 @@ int main() {
     cin >> input;
 
     if (cin.fail()) {
-      cin.clear();
-      cout << "Unknown Input! Please review possible buttons:" << endl
-           << "0: Settings" << endl;
-      remote->printData();
-      cout << "8: Undo" << endl << "9: Exit" << endl;
+      remote.reset();
+      throw domain_error("Unknown Input! Crashing for Safety");
     }
 
     else if (input == 0)
@@ -63,10 +60,8 @@ int main() {
       cin >> input;
 
       if (cin.fail()) {
-        cin.clear();
-        cout << "Unknown Input! Please review possible buttons:" << endl
-             << "1. On" << endl
-             << "2. Off" << endl;
+        remote.reset();
+        throw domain_error("Unknown Input! Crashing for Safety");
       }
 
       else if (input == 1)
