@@ -1,5 +1,5 @@
 #include "appliance_commanders.hpp"
-#include "remote_control.hpp"
+#include "console_remote.hpp"
 
 using namespace std;
 using namespace further_encapsulation;
@@ -34,56 +34,7 @@ int main() {
   remote->setCommander(5, water);
   remote->setCommander(6, make_shared<GardenLightCommander>());
 
-  unsigned short input{};
-  unsigned short slot{};
-
-  cout << "Welcome to your Objectech Remote Control" << endl
-       << "0: Settings" << endl;
-  remote->printData();
-  cout << "8: Undo" << endl << "9: Exit" << endl;
-
-  while (true) {
-    cout << "Enter Slot Number: ";
-    cin >> input;
-
-    if (cin.fail()) {
-      remote.reset();
-      throw domain_error("Unknown Input! Crashing for Safety");
-    }
-
-    else if (input == 0)
-      cout << "Settings menu coming soon!" << endl;
-
-    else if (input < 8) {
-      slot = input;
-      cout << "1. On" << endl << "2. Off" << endl;
-      cin >> input;
-
-      if (cin.fail()) {
-        remote.reset();
-        throw domain_error("Unknown Input! Crashing for Safety");
-      }
-
-      else if (input == 1)
-        remote->buttonPushed(slot - 1, Button::On);
-
-      else if (input == 2)
-        remote->buttonPushed(slot - 1, Button::Off);
-
-      else
-        cout << "Cancelling" << endl;
-    }
-
-    else if (input == 8)
-      remote->undoButtonPushed();
-
-    else if (input == 9)
-      break;
-
-    else
-      cout << "Unknown Input: Please input a value from 0-9" << endl;
-  }
+  consoleRemote(move(remote));
 
   cout << "Thank You and Good Bye!!" << endl;
-  remote.reset();
 }
