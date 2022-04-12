@@ -33,7 +33,11 @@ int main() {
   remote->setCommander(5, water);
   remote->setCommander(6, make_shared<GardenLightCommander>());
 
-  consoleRemote(move(remote));
+  try {
+    consoleRemote(move(remote));
+  } catch (exception &e) {
+    cout << e.what() << endl;
+  }
 
   cout << "Thank You and Good Bye!!" << endl;
 }

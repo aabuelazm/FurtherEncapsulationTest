@@ -17,27 +17,17 @@ void consoleRemote(unique_ptr<RemoteControl> remote) {
 
   while (true) {
     cout << "Enter Slot Number: ";
-    cin >> input;
+    input = getInput();
 
-    if (cin.fail()) {
-      remote.reset();
-      throw domain_error("Unknown Input! Crashing for Safety");
-    }
-
-    else if (input == 0)
+    if (input == 0)
       cout << "Settings menu coming soon!" << endl;
 
     else if (input < 8) {
       slot = input;
       cout << "1. On" << endl << "2. Off" << endl;
-      cin >> input;
+      input = getInput();
 
-      if (cin.fail()) {
-        remote.reset();
-        throw domain_error("Unknown Input! Crashing for Safety");
-      }
-
-      else if (input == 1)
+      if (input == 1)
         remote->buttonPushed(slot - 1, Button::On);
 
       else if (input == 2)
@@ -56,8 +46,6 @@ void consoleRemote(unique_ptr<RemoteControl> remote) {
     else
       cout << "Bad Input: Please input a value from 0-9" << endl;
   }
-
-  remote.reset();
 }
 } // namespace further_encapsulation
 

@@ -12,6 +12,8 @@ void addAppliance();
 void removeAppliance();
 void makeMacro();
 unique_ptr<RemoteControl> setSlot(unique_ptr<RemoteControl> remote);
+
+unsigned short getInput();
 } // namespace further_encapsulation
 
 #endif
