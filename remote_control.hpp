@@ -4,16 +4,17 @@
 #include "commander_class.hpp"
 #include <utility>
 
+using namespace std;
+
 namespace further_encapsulation {
 
 class RemoteControl {
 private:
-  std::shared_ptr<Commander> slots[7]{};
-  std::pair<std::shared_ptr<Commander>, Button> last_command{};
+  shared_ptr<Commander> slots[7]{};
+  pair<shared_ptr<Commander>, Button> last_command{};
 
 public:
-  void setCommander(unsigned short int slot,
-                    std::shared_ptr<Commander> Appliance) {
+  void setCommander(unsigned short int slot, shared_ptr<Commander> Appliance) {
     slots[slot] = Appliance;
   }
 
@@ -23,7 +24,7 @@ public:
       appliance->on();
     else
       appliance->off();
-    last_command = std::make_pair(appliance, button_pushed);
+    last_command = make_pair(appliance, button_pushed);
   }
 
   void undoButtonPushed() {
@@ -36,7 +37,7 @@ public:
 
   void printData() {
     for (unsigned short int i = 1; i <= 7; i++) {
-      std::cout << i << ": ";
+      cout << i << ": ";
       slots[i - 1]->printData();
     }
   }

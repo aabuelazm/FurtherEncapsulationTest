@@ -1,38 +1,40 @@
 #ifndef CONSOLE_REMOTE_HPP
 #define CONSOLE_REMOTE_HPP
 
-#include "remote_control.hpp"
+#include "remote_control_settings.hpp"
+
+using namespace std;
 
 namespace further_encapsulation {
-void consoleRemote(std::unique_ptr<RemoteControl> remote) {
-  std::cout << "Welcome to your Objectech Remote Control" << std::endl
-            << "0: Settings" << std::endl;
+void consoleRemote(unique_ptr<RemoteControl> remote) {
+  cout << "Welcome to your Objectech Remote Control" << endl
+       << "0: Settings" << endl;
   remote->printData();
-  std::cout << "8: Undo" << std::endl << "9: Exit" << std::endl;
+  cout << "8: Undo" << endl << "9: Exit" << endl;
 
   unsigned short input{};
   unsigned short slot{};
 
   while (true) {
-    std::cout << "Enter Slot Number: ";
-    std::cin >> input;
+    cout << "Enter Slot Number: ";
+    cin >> input;
 
-    if (std::cin.fail()) {
+    if (cin.fail()) {
       remote.reset();
-      throw std::domain_error("Unknown Input! Crashing for Safety");
+      throw domain_error("Unknown Input! Crashing for Safety");
     }
 
     else if (input == 0)
-      std::cout << "Settings menu coming soon!" << std::endl;
+      cout << "Settings menu coming soon!" << endl;
 
     else if (input < 8) {
       slot = input;
-      std::cout << "1. On" << std::endl << "2. Off" << std::endl;
-      std::cin >> input;
+      cout << "1. On" << endl << "2. Off" << endl;
+      cin >> input;
 
-      if (std::cin.fail()) {
+      if (cin.fail()) {
         remote.reset();
-        throw std::domain_error("Unknown Input! Crashing for Safety");
+        throw domain_error("Unknown Input! Crashing for Safety");
       }
 
       else if (input == 1)
@@ -42,7 +44,7 @@ void consoleRemote(std::unique_ptr<RemoteControl> remote) {
         remote->buttonPushed(slot - 1, Button::Off);
 
       else
-        std::cout << "Cancelling" << std::endl;
+        cout << "Cancelling" << endl;
     }
 
     else if (input == 8)
@@ -52,7 +54,7 @@ void consoleRemote(std::unique_ptr<RemoteControl> remote) {
       break;
 
     else
-      std::cout << "Bad Input: Please input a value from 0-9" << std::endl;
+      cout << "Bad Input: Please input a value from 0-9" << endl;
   }
 
   remote.reset();

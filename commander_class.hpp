@@ -8,21 +8,23 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 namespace further_encapsulation {
 enum class Button : bool { Off = false, On = true };
 
 class Commander {
 public:
-  virtual void on() { std::cout << "On: Slot is empty" << std::endl; }
+  virtual void on() { cout << "On: Slot is empty" << endl; }
 
-  virtual void off() { std::cout << "Off: Slot is empty" << std::endl; }
+  virtual void off() { cout << "Off: Slot is empty" << endl; }
 
   virtual void undo(Button last_command) {
-    std::cout << "Undo: Slot is empty" << std::endl;
+    cout << "Undo: Slot is empty" << endl;
   }
 
   virtual void printData() {
-    std::string type = abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0);
+    string type = abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0);
 
     auto itr = type.find_last_of(':');
     type.erase(0, itr + 1);
@@ -30,13 +32,13 @@ public:
     itr = type.find("Commander");
     type.erase(itr);
 
-    std::cout << type << std::endl;
+    cout << type << endl;
   }
 };
 
 class MacroCommander : virtual public Commander {
 public:
-  std::vector<std::shared_ptr<Commander>> commanders;
+  vector<shared_ptr<Commander>> commanders;
 
   void on() {
     for (auto commander : commanders)
@@ -54,7 +56,7 @@ public:
   }
 
   void printData() {
-    std::string type = abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0);
+    string type = abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0);
 
     auto itr = type.find_last_of(':');
     type.erase(0, itr + 1);
@@ -62,10 +64,10 @@ public:
     itr = type.find("Commander");
     type.erase(itr);
 
-    std::cout << type << std::endl;
+    cout << type << endl;
 
     for (auto commander : commanders) {
-      std::cout << "   - ";
+      cout << "   - ";
       commander->printData();
     }
   }

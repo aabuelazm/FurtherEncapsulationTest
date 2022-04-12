@@ -1,4 +1,3 @@
-#include "appliance_commanders.hpp"
 #include "console_remote.hpp"
 
 using namespace std;

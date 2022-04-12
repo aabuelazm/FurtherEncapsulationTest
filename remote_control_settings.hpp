@@ -4,4 +4,10 @@
 #include "appliance_commanders.hpp"
 #include "remote_control.hpp"
 
+using namespace std;
+
+namespace further_encapsulation {
+unique_ptr<RemoteControl> remoteSettings(unique_ptr<RemoteControl> remote);
+} // namespace further_encapsulation
+
 #endif
