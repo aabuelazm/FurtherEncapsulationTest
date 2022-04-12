@@ -11,7 +11,7 @@ project(FurtherEncapsulationTest)
 set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -iquote ${PROJECT_SOURCE_DIR}")
 
 # set sources here
-set(SOURCES further_encapsulation_test.cpp random_appliances.hpp random_appliances.cpp commander_class.hpp appliance_commanders.hpp appliance_commanders.cpp remote_control.hpp console_remote.hpp)
+set(SOURCES further_encapsulation_test.cpp random_appliances.hpp random_appliances.cpp commander_class.hpp appliance_commanders.hpp appliance_commanders.cpp remote_control.hpp remote_control_settings.hpp console_remote.hpp)
 
 # add the executable
 add_executable(FurtherEncapsulationTest ${SOURCES})
