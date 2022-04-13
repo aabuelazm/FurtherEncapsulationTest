@@ -12,7 +12,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class StereoCommander : virtual public Commander {
@@ -22,7 +21,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class FaucetControlCommander : virtual public Commander {
@@ -32,7 +30,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class HottubCommander : virtual public Commander {
@@ -42,7 +39,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class ThermostatCommander : virtual public Commander {
@@ -52,7 +48,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class SecurityControlCommander : virtual public Commander {
@@ -62,7 +57,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class CeilingLightCommander : virtual public Commander {
@@ -72,7 +66,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class OutdoorLightCommander : virtual public Commander {
@@ -82,7 +75,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class TVCommander : virtual public Commander {
@@ -92,7 +84,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class CeilingFanCommander : virtual public Commander {
@@ -113,7 +104,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class GarageDoorCommander : virtual public Commander {
@@ -123,7 +113,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class SprinklerCommander : virtual public Commander {
@@ -133,7 +122,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 
 class LightCommander : virtual public Commander {
@@ -143,7 +131,6 @@ private:
 public:
   void on();
   void off();
-  void undo(Button last_command);
 };
 } // namespace further_encapsulation
 

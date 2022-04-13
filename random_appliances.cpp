@@ -54,24 +54,21 @@ void TV::setVolume(unsigned int volume) {
 
 void CeilingFan::high() {
   this->speed = 420;
-  cout << this->speed << endl;
+  cout << "Speed at " << this->speed << endl;
 }
 void CeilingFan::medium() {
   this->speed = 210;
-  cout << this->speed << endl;
+  cout << "Speed at " << this->speed << endl;
 }
 void CeilingFan::low() {
   this->speed = 105;
-  cout << this->speed << endl;
+  cout << "Speed at " << this->speed << endl;
 }
 void CeilingFan::off() {
   this->speed = 0;
-  cout << this->speed << endl;
-}
-unsigned int CeilingFan::getSpeed() {
   cout << "Speed at " << this->speed << endl;
-  return this->speed;
 }
+unsigned int CeilingFan::getSpeed() { return this->speed; }
 
 void GardenLight::setDuskTime(unsigned short int d_time) {
   dusk_time = d_time;

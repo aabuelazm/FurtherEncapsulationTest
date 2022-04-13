@@ -20,7 +20,10 @@ public:
   virtual void off() { cout << "Off: Slot is empty" << endl; }
 
   virtual void undo(Button last_command) {
-    cout << "Undo: Slot is empty" << endl;
+    if (bool(last_command))
+      this->off();
+    else
+      this->on();
   }
 
   virtual void printData() {
