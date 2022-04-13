@@ -10,6 +10,12 @@
 
 using namespace std;
 
+// An attempt to apply more OOP good design principles to the Command Pattern in
+// Head First Design Patterns. Instead of creating 2 classes to deal with an
+// appliance (an ON command class and an OFF command class), we design the
+// remote to put a Commander class in each of its slots and it just passes the
+// button press to it, allowing the remote to not care about anything other than
+// knowing that it is dealing wih a Commander class or subclass
 namespace further_encapsulation {
 enum class Button : bool { Off = false, On = true };
 

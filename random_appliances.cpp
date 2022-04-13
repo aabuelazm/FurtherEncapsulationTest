@@ -3,6 +3,7 @@
 using namespace std;
 using namespace further_encapsulation;
 
+// Implementation of the random appliances from random_appliances.hpp
 void ApplianceControl::on() { cout << "Appliance On" << endl; }
 void ApplianceControl::off() { cout << "Appliance Off" << endl; }
 

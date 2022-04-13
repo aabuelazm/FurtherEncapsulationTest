@@ -4,6 +4,9 @@
 #include "commander_class.hpp"
 #include "random_appliances.hpp"
 
+// A header file that creates subclasses that act as our encapsulation of the
+// many different random appliances, think of them as drivers or whatever (with
+// ApplianceControl being our generic driver).
 namespace further_encapsulation {
 class ApplianceControlCommander : virtual public Commander {
 private:
