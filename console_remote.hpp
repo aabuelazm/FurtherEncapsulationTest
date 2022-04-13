@@ -8,7 +8,7 @@ using namespace std;
 namespace further_encapsulation {
 void consoleRemote(unique_ptr<RemoteControl> remote) {
   unsigned short input{};
-  unsigned short slot{};
+  unsigned short button{};
 
   while (true) {
     cout << endl
@@ -22,15 +22,14 @@ void consoleRemote(unique_ptr<RemoteControl> remote) {
       remote = remoteSettings(move(remote));
 
     else if (input < 8) {
-      slot = input;
       cout << endl << "1: On" << endl << "2: Off" << endl << "Enter Button: ";
-      input = getInput();
+      button = getInput();
 
-      if (input == 1)
-        remote->buttonPushed(slot - 1, Button::On);
+      if (button == 1)
+        remote->buttonPushed(input - 1, Button::On);
 
-      else if (input == 2)
-        remote->buttonPushed(slot - 1, Button::Off);
+      else if (button == 2)
+        remote->buttonPushed(input - 1, Button::Off);
 
       else
         cout << "Cancelling" << endl;
