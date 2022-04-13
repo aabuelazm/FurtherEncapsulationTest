@@ -15,18 +15,19 @@ static void printSavedAppliances() {
   }
 }
 
-unique_ptr<RemoteControl> remoteSettings(unique_ptr<RemoteControl> remote) {
+unique_ptr<RemoteControl>
+further_encapsulation::remoteSettings(unique_ptr<RemoteControl> remote) {
   unsigned short input;
 
-  cout << "Settings Menu" << endl
-       << "1: Add Appliance" << endl
-       << "2: Remove Appliance" << endl
-       << "3: Make Macro" << endl
-       << "4: Set Slot" << endl
-       << "5: Exit Settings Menu";
-
   while (true) {
-    cout << "Input Command: ";
+    cout << endl
+         << "Settings Menu" << endl
+         << "1: Add Appliance" << endl
+         << "2: Remove Appliance" << endl
+         << "3: Make Macro" << endl
+         << "4: Set Slot" << endl
+         << "5: Exit Settings Menu" << endl
+         << "Input Command: ";
     input = getInput();
 
     if (input == 1)
@@ -53,9 +54,25 @@ unique_ptr<RemoteControl> remoteSettings(unique_ptr<RemoteControl> remote) {
 
 void further_encapsulation::addAppliance() {
   printSavedAppliances();
+  cout << endl
+       << "To add new appliance, input corresponding number" << endl
+       << "1: ApplianceControl" << endl
+       << "2: Stereo" << endl
+       << "3: FaucetControl" << endl
+       << "4: Hottub" << endl
+       << "5: Thermostat" << endl
+       << "6: SecurityControl" << endl
+       << "7: CeilingLight" << endl
+       << "8: OutdoorLight" << endl
+       << "9: TV" << endl
+       << "10: CeilingFan" << endl
+       << "11: GardenLight" << endl
+       << "12: GarageDoor" << endl
+       << "13: Sprinkler" << endl
+       << "14: Light" << endl
+       << "Enter Appliance Number: ";
 
   unsigned short input = getInput();
-
   if (input == 0)
     cout << "Cancelling" << endl;
   else if (input == 1)
@@ -88,6 +105,69 @@ void further_encapsulation::addAppliance() {
     saved_appliances.push_back(make_shared<LightCommander>());
   else
     cout << "Bad Input: Please input a value from 1-14" << endl;
+}
+
+void further_encapsulation::removeAppliance() {
+  cout << endl << "Which appliance would you like to remove?" << endl;
+  printSavedAppliances();
+
+  cout << "Enter Appliance Number: ";
+  unsigned short input = getInput();
+  if (input == 0 || input > saved_appliances.size())
+    cout << "Cancelling!" << endl;
+  else
+    saved_appliances.erase(saved_appliances.begin() + input - 1);
+}
+
+void further_encapsulation::makeMacro() {
+  cout << endl
+       << "Make new macro by adding appliances. This allows control of "
+          "multiple appliances using one button"
+       << endl
+       << "0: End Macro" << endl;
+  printSavedAppliances();
+  auto new_macro = make_shared<MacroCommander>();
+  unsigned short input;
+  auto len = saved_appliances.size();
+
+  while (true) {
+    cout << "Input Appliance Number: ";
+    input = getInput();
+
+    if (input == 0)
+      break;
+    else if (input > len)
+      cout << "Bad Inut: Please input number between 0-" << len << endl;
+    else
+      new_macro->commanders.push_back(saved_appliances[input - 1]);
+  }
+
+  saved_appliances.push_back(new_macro);
+}
+
+unique_ptr<RemoteControl>
+further_encapsulation::setSlot(unique_ptr<RemoteControl> remote) {
+  cout << endl
+       << "Which Appliance or Macro do you want to add to your remote?" << endl;
+  printSavedAppliances();
+  cout << "Enter Appliance Number: ";
+  unsigned short appliance_number = getInput();
+  if (appliance_number == 0 || appliance_number > saved_appliances.size()) {
+    cout << "Bad Input: Please input number between 1-7" << endl;
+    return remote;
+  }
+
+  cout << endl << "Which slot do you want to overwrite?" << endl;
+  remote->printData();
+  cout << "Enter Slot Number: ";
+  unsigned short slot_number = getInput();
+  if (slot_number == 0 || slot_number > 7)
+    cout << "Bad Input: Please input number between 1-7" << endl;
+  else
+    remote->setCommander(slot_number - 1,
+                         saved_appliances[appliance_number - 1]);
+
+  return remote;
 }
 
 unsigned short further_encapsulation::getInput() {

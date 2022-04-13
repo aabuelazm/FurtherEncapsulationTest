@@ -7,24 +7,23 @@ using namespace std;
 
 namespace further_encapsulation {
 void consoleRemote(unique_ptr<RemoteControl> remote) {
-  cout << "Welcome to your Objectech Remote Control" << endl
-       << "0: Settings" << endl;
-  remote->printData();
-  cout << "8: Undo" << endl << "9: Exit" << endl;
-
   unsigned short input{};
   unsigned short slot{};
 
   while (true) {
-    cout << "Enter Slot Number: ";
+    cout << endl
+         << "Welcome to your Objectech Remote Control" << endl
+         << "0: Settings" << endl;
+    remote->printData();
+    cout << "8: Undo" << endl << "9: Exit" << endl << "Enter Slot Number: ";
     input = getInput();
 
     if (input == 0)
-      cout << "Settings menu coming soon!" << endl;
+      remote = remoteSettings(move(remote));
 
     else if (input < 8) {
       slot = input;
-      cout << "1. On" << endl << "2. Off" << endl;
+      cout << endl << "1. On" << endl << "2. Off" << endl;
       input = getInput();
 
       if (input == 1)

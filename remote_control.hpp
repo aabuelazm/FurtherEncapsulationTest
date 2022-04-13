@@ -14,6 +14,14 @@ private:
   pair<shared_ptr<Commander>, Button> last_command{};
 
 public:
+  RemoteControl() {
+    for (int i = 0; i < 7; i++) {
+      slots[i] = make_shared<Commander>();
+    }
+  }
+
+  ~RemoteControl() {}
+
   void setCommander(unsigned short int slot, shared_ptr<Commander> Appliance) {
     slots[slot] = Appliance;
   }
