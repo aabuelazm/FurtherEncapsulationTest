@@ -6,8 +6,12 @@
 
 using namespace std;
 
+// This header includes all the functions that our remote control has, 7 slots
+// with an On and Off button each, a single undo button, and a way to change
+// slots/tell client what options it has. This code can be adapted to fit
+// different methods of changing slots, be it through a terminal or some other
+// way you would want your remote to be updated.
 namespace further_encapsulation {
-
 class RemoteControl {
 private:
   shared_ptr<Commander> slots[7]{};

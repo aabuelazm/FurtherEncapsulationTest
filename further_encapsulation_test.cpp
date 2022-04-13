@@ -3,12 +3,12 @@
 using namespace std;
 using namespace further_encapsulation;
 
+// Clean code achieved?
 int main() {
   try {
-    consoleRemote(make_unique<RemoteControl>());
+    runRemote(make_unique<RemoteControl>());
+    cout << "Thank You and Good Bye!!" << endl;
   } catch (exception &e) {
     cout << e.what() << endl;
   }
-
-  cout << "Thank You and Good Bye!!" << endl;
 }

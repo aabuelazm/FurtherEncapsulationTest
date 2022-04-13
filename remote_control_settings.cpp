@@ -5,6 +5,7 @@ using namespace further_encapsulation;
 
 static vector<shared_ptr<Commander>> saved_appliances{};
 
+// Implementation of all the helper functions from remote_control_settings.hpp
 static void printSavedAppliances() {
   auto len = saved_appliances.size();
   cout << endl << "Your Appliances:" << endl;

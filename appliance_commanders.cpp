@@ -3,6 +3,7 @@
 using namespace std;
 using namespace further_encapsulation;
 
+// Implementation of the Commanders from appliance_commanders.hpp
 void ApplianceControlCommander::on() { this->appliance.on(); }
 void ApplianceControlCommander::off() { this->appliance.off(); }
 

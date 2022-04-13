@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+// This is a header file with the example appliances for the home
+// automation/Command pattern chapter of Head First Design Patterns
 namespace further_encapsulation {
 class ApplianceControl {
 public:
