@@ -15,9 +15,10 @@ private:
 
 public:
   RemoteControl() {
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 7; i++)
       slots[i] = make_shared<Commander>();
-    }
+
+    last_command.first = slots[0];
   }
 
   ~RemoteControl() {}

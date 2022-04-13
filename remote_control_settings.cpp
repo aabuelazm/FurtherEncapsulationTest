@@ -7,7 +7,7 @@ static vector<shared_ptr<Commander>> saved_appliances{};
 
 static void printSavedAppliances() {
   auto len = saved_appliances.size();
-  cout << "Your Appliances:" << endl;
+  cout << endl << "Your Appliances:" << endl;
 
   for (size_t i = 1; i <= len; i++) {
     cout << i << ": ";

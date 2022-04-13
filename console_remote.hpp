@@ -23,7 +23,7 @@ void consoleRemote(unique_ptr<RemoteControl> remote) {
 
     else if (input < 8) {
       slot = input;
-      cout << endl << "1. On" << endl << "2. Off" << endl;
+      cout << endl << "1: On" << endl << "2: Off" << endl << "Enter Button: ";
       input = getInput();
 
       if (input == 1)

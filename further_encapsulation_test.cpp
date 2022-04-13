@@ -4,10 +4,8 @@ using namespace std;
 using namespace further_encapsulation;
 
 int main() {
-  auto remote = make_unique<RemoteControl>();
-
   try {
-    consoleRemote(move(remote));
+    consoleRemote(make_unique<RemoteControl>());
   } catch (exception &e) {
     cout << e.what() << endl;
   }
