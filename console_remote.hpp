@@ -15,14 +15,19 @@ void consoleRemote(unique_ptr<RemoteControl> remote) {
          << "Welcome to your Objectech Remote Control" << endl
          << "0: Settings" << endl;
     remote->printData();
-    cout << "8: Undo" << endl << "9: Exit" << endl << "Enter Slot Number: ";
+    cout << "8: Undo" << endl
+         << "9: Exit" << endl
+         << "Enter Slot Number: " << flush;
     input = getInput();
 
     if (input == 0)
       remote = remoteSettings(move(remote));
 
     else if (input < 8) {
-      cout << endl << "1: On" << endl << "2: Off" << endl << "Enter Button: ";
+      cout << endl
+           << "1: On" << endl
+           << "2: Off" << endl
+           << "Enter Button: " << flush;
       button = getInput();
 
       if (button == 1)

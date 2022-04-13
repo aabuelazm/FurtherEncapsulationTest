@@ -27,7 +27,7 @@ further_encapsulation::remoteSettings(unique_ptr<RemoteControl> remote) {
          << "3: Make Macro" << endl
          << "4: Set Slot" << endl
          << "5: Exit Settings Menu" << endl
-         << "Input Command: ";
+         << "Input Command: " << flush;
     input = getInput();
 
     if (input == 1)
@@ -70,7 +70,7 @@ void further_encapsulation::addAppliance() {
        << "12: GarageDoor" << endl
        << "13: Sprinkler" << endl
        << "14: Light" << endl
-       << "Enter Appliance Number: ";
+       << "Enter Appliance Number: " << flush;
 
   unsigned short input = getInput();
   if (input == 0)
@@ -111,7 +111,7 @@ void further_encapsulation::removeAppliance() {
   cout << endl << "Which appliance would you like to remove?" << endl;
   printSavedAppliances();
 
-  cout << "Enter Appliance Number: ";
+  cout << "Enter Appliance Number: " << flush;
   unsigned short input = getInput();
   if (input == 0 || input > saved_appliances.size())
     cout << "Cancelling!" << endl;
@@ -131,7 +131,7 @@ void further_encapsulation::makeMacro() {
   auto len = saved_appliances.size();
 
   while (true) {
-    cout << "Input Appliance Number: ";
+    cout << "Input Appliance Number: " << flush;
     input = getInput();
 
     if (input == 0)
@@ -150,7 +150,7 @@ further_encapsulation::setSlot(unique_ptr<RemoteControl> remote) {
   cout << endl
        << "Which Appliance or Macro do you want to add to your remote?" << endl;
   printSavedAppliances();
-  cout << "Enter Appliance Number: ";
+  cout << "Enter Appliance Number: " << flush;
   unsigned short appliance_number = getInput();
   if (appliance_number == 0 || appliance_number > saved_appliances.size()) {
     cout << "Bad Input: Please input number between 1-7" << endl;
@@ -159,7 +159,7 @@ further_encapsulation::setSlot(unique_ptr<RemoteControl> remote) {
 
   cout << endl << "Which slot do you want to overwrite?" << endl;
   remote->printData();
-  cout << "Enter Slot Number: ";
+  cout << "Enter Slot Number: " << flush;
   unsigned short slot_number = getInput();
   if (slot_number == 0 || slot_number > 7)
     cout << "Bad Input: Please input number between 1-7" << endl;
