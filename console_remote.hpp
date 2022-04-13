@@ -11,8 +11,7 @@ void consoleRemote(unique_ptr<RemoteControl> remote) {
   unsigned short button{};
 
   while (true) {
-    cout << endl
-         << "Welcome to your Objectech Remote Control" << endl
+    cout << "Welcome to your Objectech Remote Control" << endl
          << "0: Settings" << endl;
     remote->printData();
     cout << "8: Undo" << endl << "9: Exit" << endl << "Enter Slot Number: ";
@@ -22,7 +21,7 @@ void consoleRemote(unique_ptr<RemoteControl> remote) {
       remote = remoteSettings(move(remote));
 
     else if (input < 8) {
-      cout << endl << "1: On" << endl << "2: Off" << endl << "Enter Button: ";
+      cout << "1: On" << endl << "2: Off" << endl << "Enter Button: ";
       button = getInput();
 
       if (button == 1)

@@ -39,6 +39,7 @@ public:
   }
 };
 
+static unsigned short level = 0;
 class MacroCommander : virtual public Commander {
 public:
   vector<shared_ptr<Commander>> commanders;
@@ -59,20 +60,37 @@ public:
   }
 
   void printData() {
-    string type = abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0);
-
-    auto itr = type.find_last_of(':');
-    type.erase(0, itr + 1);
-
-    itr = type.find("Commander");
-    type.erase(itr);
-
-    cout << type << endl;
+    cout << "Macro" << endl;
+    level++;
 
     for (auto commander : commanders) {
-      cout << "   - ";
+      for (int i = 0; i < level; i++)
+        cout << "     ";
       commander->printData();
     }
+
+    level--;
+  }
+};
+
+// For use with MacroCommander, allows a Macro that turns on one thing and
+// turns something else off. Decorator Pattern Baby!!
+class ReverseCommander : virtual public Commander {
+private:
+  shared_ptr<Commander> commander;
+
+  // make default constructor private so people do not attempt it
+  ReverseCommander() {}
+
+public:
+  ReverseCommander(shared_ptr<Commander> input) : commander(input) {}
+
+  void on() { commander->off(); }
+  void off() { commander->on(); }
+
+  void printData() {
+    cout << "!";
+    commander->printData();
   }
 };
 } // namespace further_encapsulation
