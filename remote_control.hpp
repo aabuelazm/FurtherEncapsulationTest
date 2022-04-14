@@ -15,14 +15,15 @@ namespace further_encapsulation {
 class RemoteControl {
 private:
   shared_ptr<Commander> slots[7]{};
-  pair<shared_ptr<Commander>, Button> last_command{};
+  pair<shared_ptr<Commander>, Button> last_command;
 
 public:
   RemoteControl() {
     for (int i = 0; i < 7; i++)
-      slots[i] = make_shared<Commander>();
+      slots[i] = make_shared<Commander>("Empty");
 
     last_command.first = slots[0];
+    last_command.second = Button::Off;
   }
 
   ~RemoteControl() {}
@@ -50,7 +51,7 @@ public:
 
   void printData() {
     for (unsigned short int i = 1; i <= 7; i++) {
-      cout << i << ": ";
+      cout << i << ". ";
       slots[i - 1]->printData();
     }
   }

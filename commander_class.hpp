@@ -20,7 +20,12 @@ namespace further_encapsulation {
 enum class Button : bool { Off = false, On = true };
 
 class Commander {
+protected:
+  string name;
+
 public:
+  Commander(string input_name) : name(input_name) {}
+
   virtual void on() { cout << "On: Slot is empty" << endl; }
 
   virtual void off() { cout << "Off: Slot is empty" << endl; }
@@ -41,13 +46,17 @@ public:
     itr = type.find("Commander");
     type.erase(itr);
 
-    cout << type << endl;
+    if (!type.empty())
+      cout << type << ": ";
+    cout << this->name << endl;
   }
 };
 
 static unsigned short level = 0;
 class MacroCommander : virtual public Commander {
 public:
+  using Commander::Commander;
+
   vector<shared_ptr<Commander>> commanders;
 
   void on() {
@@ -66,12 +75,12 @@ public:
   }
 
   void printData() {
-    cout << "Macro" << endl;
+    cout << "Macro: " << this->name << endl;
     level++;
 
     for (auto commander : commanders) {
       for (int i = 0; i < level; i++)
-        cout << "     ";
+        cout << "\t";
       commander->printData();
     }
 
@@ -85,11 +94,9 @@ class ReverseCommander : virtual public Commander {
 private:
   shared_ptr<Commander> commander;
 
-  // make default constructor private so people do not attempt it
-  ReverseCommander() {}
-
 public:
-  ReverseCommander(shared_ptr<Commander> input) : commander(input) {}
+  ReverseCommander(shared_ptr<Commander> input)
+      : Commander("!"), commander(input) {}
 
   void on() { commander->off(); }
   void off() { commander->on(); }

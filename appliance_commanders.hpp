@@ -13,6 +13,7 @@ private:
   ApplianceControl appliance{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -22,6 +23,7 @@ private:
   Stereo stereo{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -31,6 +33,7 @@ private:
   FaucetControl faucet{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -40,6 +43,7 @@ private:
   Hottub hottub{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -49,6 +53,7 @@ private:
   Thermostat thermostat{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -58,6 +63,7 @@ private:
   SecurityControl security{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -67,6 +73,7 @@ private:
   CeilingLight c_light{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -76,6 +83,7 @@ private:
   OutdoorLight o_light{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -85,6 +93,7 @@ private:
   TV tv{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -95,6 +104,7 @@ private:
   unsigned int last_speed{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
   void undo(Button last_command);
@@ -105,6 +115,7 @@ private:
   GardenLight g_light{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -114,6 +125,7 @@ private:
   GarageDoor g_door{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -123,6 +135,7 @@ private:
   Sprinkler sprinkler{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
@@ -132,6 +145,7 @@ private:
   Light light{};
 
 public:
+  using Commander::Commander;
   void on();
   void off();
 };
