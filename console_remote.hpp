@@ -5,14 +5,16 @@
 
 using namespace std;
 
+// This is how to handle a remote control in the terminal. You can replace this
+// file with another that can handle remotes and you end up with a whole other
+// implementation with all the logic behind it being the same.
 namespace further_encapsulation {
-void consoleRemote(unique_ptr<RemoteControl> remote) {
+void runRemote(unique_ptr<RemoteControl> remote) {
   unsigned short input{};
   unsigned short button{};
 
   while (true) {
-    cout << endl
-         << "Welcome to your Objectech Remote Control" << endl
+    cout << "Welcome to your Objectech Remote Control" << endl
          << "0: Settings" << endl;
     remote->printData();
     cout << "8: Undo" << endl
@@ -24,10 +26,7 @@ void consoleRemote(unique_ptr<RemoteControl> remote) {
       remote = remoteSettings(move(remote));
 
     else if (input < 8) {
-      cout << endl
-           << "1: On" << endl
-           << "2: Off" << endl
-           << "Enter Button: " << flush;
+      cout << "1: On" << endl << "2: Off" << endl << "Enter Button: ";
       button = getInput();
 
       if (button == 1)

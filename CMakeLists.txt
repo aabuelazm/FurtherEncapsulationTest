@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
 
-# concepts :)
-set(CXX_STANDARD 20)
-set(CXX_STANDARD_REQUIRED ON)
-
 # set the project name
 project(FurtherEncapsulationTest)
 

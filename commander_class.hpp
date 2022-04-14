@@ -10,6 +10,12 @@
 
 using namespace std;
 
+// An attempt to apply more OOP good design principles to the Command Pattern in
+// Head First Design Patterns. Instead of creating 2 classes to deal with an
+// appliance (an ON command class and an OFF command class), we design the
+// remote to put a Commander class in each of its slots and it just passes the
+// button press to it, allowing the remote to not care about anything other than
+// knowing that it is dealing wih a Commander class or subclass
 namespace further_encapsulation {
 enum class Button : bool { Off = false, On = true };
 
@@ -20,7 +26,10 @@ public:
   virtual void off() { cout << "Off: Slot is empty" << endl; }
 
   virtual void undo(Button last_command) {
-    cout << "Undo: Slot is empty" << endl;
+    if (bool(last_command))
+      this->off();
+    else
+      this->on();
   }
 
   virtual void printData() {
@@ -36,6 +45,7 @@ public:
   }
 };
 
+static unsigned short level = 0;
 class MacroCommander : virtual public Commander {
 public:
   vector<shared_ptr<Commander>> commanders;
@@ -56,20 +66,37 @@ public:
   }
 
   void printData() {
-    string type = abi::__cxa_demangle(typeid(*this).name(), 0, 0, 0);
-
-    auto itr = type.find_last_of(':');
-    type.erase(0, itr + 1);
-
-    itr = type.find("Commander");
-    type.erase(itr);
-
-    cout << type << endl;
+    cout << "Macro" << endl;
+    level++;
 
     for (auto commander : commanders) {
-      cout << "   - ";
+      for (int i = 0; i < level; i++)
+        cout << "     ";
       commander->printData();
     }
+
+    level--;
+  }
+};
+
+// For use with MacroCommander, allows a Macro that turns on one thing and
+// turns something else off. Decorator Pattern Baby!!
+class ReverseCommander : virtual public Commander {
+private:
+  shared_ptr<Commander> commander;
+
+  // make default constructor private so people do not attempt it
+  ReverseCommander() {}
+
+public:
+  ReverseCommander(shared_ptr<Commander> input) : commander(input) {}
+
+  void on() { commander->off(); }
+  void off() { commander->on(); }
+
+  void printData() {
+    cout << "!";
+    commander->printData();
   }
 };
 } // namespace further_encapsulation
