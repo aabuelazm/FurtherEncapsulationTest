@@ -9,7 +9,7 @@ using namespace std;
 // file with another that can handle remotes and you end up with a whole other
 // implementation with all the logic behind it being the same.
 namespace further_encapsulation {
-void runRemote(unique_ptr<RemoteControl> remote) {
+inline void runRemote(unique_ptr<RemoteControl> remote) {
   unsigned short input{};
   unsigned short button{};
 
